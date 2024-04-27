@@ -1,0 +1,21 @@
+pizza
+burger
+sushi
+pasta
+salad
+steak
+chicken
+sandwich
+soup
+taco
+burrito
+ramen
+sushi
+curry
+fried rice
+noodles
+pancake
+waffle
+ice cream
+cake
+cookie

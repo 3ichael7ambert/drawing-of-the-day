@@ -1,0 +1,20 @@
+doctor
+teacher
+engineer
+artist
+chef
+lawyer
+nurse
+scientist
+programmer
+writer
+athlete
+musician
+designer
+accountant
+entrepreneur
+pilot
+veterinarian
+firefighter
+police officer
+architect

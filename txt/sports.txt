@@ -1,0 +1,25 @@
+soccer
+basketball
+football
+tennis
+volleyball
+baseball
+golf
+swimming
+running
+cycling
+boxing
+hiking
+surfing
+skateboarding
+skiing
+snowboarding
+climbing
+rugby
+cricket
+badminton
+table tennis
+rowing
+karate
+wrestling
+gymnastics
