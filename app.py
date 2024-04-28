@@ -1,6 +1,10 @@
+# app.py
+
 from flask import Flask, request
 from twilio.rest import Client
+from schedule import every, run_pending
 import random
+import threading
 
 app = Flask(__name__)
 
@@ -28,14 +32,14 @@ def signup():
 
     # Check if the phone number is already registered
     if User.query.filter_by(phone_number=phone_number).first():
-        return 'Phone number already registered', 400
+        return {'message': 'Phone number already registered'}, 400
 
     # Create a new user
     new_user = User(phone_number=phone_number)
     db.session.add(new_user)
     db.session.commit()
 
-    return 'Signup successful', 201
+    return {'message': 'Signup successful'}, 201
 
 # Function to send daily SMS
 def send_daily_sms():
@@ -58,6 +62,17 @@ def send_sms(phone_number, message):
         to=phone_number
     )
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# Schedule the daily SMS sending
+def schedule_daily_sms():
+    every().day.at('08:00').do(send_daily_sms)
 
+if __name__ == '__main__':
+    # Schedule daily SMS sending
+    schedule_daily_sms()
+
+    # Start Flask app in a separate thread
+    threading.Thread(target=app.run, kwargs={'debug': True}).start()
+
+    # Run the scheduler
+    while True:
+        run_pending()
